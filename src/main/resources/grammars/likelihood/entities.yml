@@ -1,0 +1,44 @@
+# NE rules
+
+# This uses the PERSON labels populated by an NER system
+- name: "ner-person"
+  label: Person
+  priority: ${rulepriority}
+  type: token
+  pattern: |
+   [entity="PERSON"]+
+
+- name: "ner-location"
+  label: Location
+  priority: ${rulepriority}
+  type: token
+  pattern: |
+    [entity="LOCATION"]+
+
+- name: "ner-org"
+  label: Organization
+  priority: ${rulepriority}
+  type: token
+  pattern: |
+    [entity="ORGANIZATION"]+
+
+# other
+
+- name: pronominal
+  label: Pronoun
+  priority: ${rulepriority}
+  type: token
+  pattern: |
+    [tag=PRP & !lemma=it]
+
+# This entity rule runs after the other NER rules
+- name: "canonical-arg"
+  label: Entity
+  priority: 2
+  type: token
+  unit: "tag"
+  pattern: |
+    # using !mention=/./ allows us to avoid creating new mentions
+    # if an entity mention has already been created for this span
+    # of text by a previously matched rule
+    /^N/* [incoming=/nsubj|obj|xcomp/ & !mention=/./] /^N/*

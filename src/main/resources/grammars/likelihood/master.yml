@@ -1,0 +1,33 @@
+taxonomy:
+  - Entity:
+    - Person:
+      - Pronoun
+    - Organization
+    - Food
+  - Location
+  - Event:
+    - Eat
+    - Witnessed
+    - Belief:
+      - HearSay
+    - Likelihood:
+      - Likely
+      - Unlikely
+
+vars:
+  # This variable's value must be quoted
+  # since it starts with a YAML indicator character
+  # See Section 4.1.3 of the Odin manual
+  etrigger: "[lemma=eat]"
+
+rules:
+  - import: /grammars/likelihood/entities.yml
+    vars:
+      # We need our entities before we can match events
+      # Here we make use of the ${rulepriority} variable
+      # used in the entities.yml rules
+      rulepriority: "1"
+
+  - import: /grammars/likelihood/events.yml
+    vars:
+      rulepriority: "3+"

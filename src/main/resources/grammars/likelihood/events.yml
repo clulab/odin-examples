@@ -1,0 +1,61 @@
+vars:
+  hearsaytrigger: "/hear|believe|think/"
+  unlikelytrigger: "[lemma=/^(unlikely|doubtful)/]"
+  likelytrigger: "[lemma=/^(likely)/]"
+
+rules:
+  - name: generic1
+    label: Event
+    priority: ${rulepriority}
+    pattern: |
+      trigger = [tag=/^VB/ & !lemma=${hearsaytrigger}]
+      agent: Person = nsubj
+      object: Entity = dobj | xcomp
+
+  - name: hearsay1
+    label: HearSay
+    priority: ${rulepriority}
+    pattern: |
+      trigger = [lemma=${hearsaytrigger}]
+      informant: Person = nsubj
+      event: Event = ccomp
+
+  - name: witness1
+    label: Witnessed
+    priority: ${rulepriority}
+    pattern: |
+      trigger = [lemma=see]
+      informant: Person = nsubj
+      event: Event = dobj
+
+  - name: likely1
+    label: Likely
+    priority: ${rulepriority}
+    pattern: |
+      trigger = ${likelytrigger}
+      event: Event = ccomp
+
+  - name: likely2
+    label: Likely
+    priority: ${rulepriority}
+    pattern: |
+      trigger = [lemma=/^(believe|think)/ & !outgoing=neg]
+      # Following an optional incoming xcomp allows us to
+      # look beyond a verb like "seems" in "seems to believe"
+      source:Entity = <xcomp? nsubj
+      event: Event = ccomp
+
+  - name: unlikely1
+    label: Unlikely
+    priority: ${rulepriority}
+    pattern: |
+      trigger = ${unlikelytrigger}
+      event: Event = ccomp
+
+  - name: unlikely2
+    label: Unlikely
+    priority: ${rulepriority}
+    pattern: |
+      trigger = [lemma=/^(believe|think)/ & outgoing=neg]
+      source:Entity = <xcomp? nsubj
+      event: Event = ccomp
