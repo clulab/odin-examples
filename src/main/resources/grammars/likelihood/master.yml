@@ -21,13 +21,13 @@ vars:
   etrigger: "[lemma=eat]"
 
 rules:
-  - import: /grammars/likelihood/entities.yml
+  - import: grammars/likelihood/entities.yml
     vars:
       # We need our entities before we can match events
       # Here we make use of the ${rulepriority} variable
       # used in the entities.yml rules
       rulepriority: "1"
 
-  - import: /grammars/likelihood/events.yml
+  - import: grammars/likelihood/events.yml
     vars:
       rulepriority: "3+"
