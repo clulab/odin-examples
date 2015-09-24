@@ -1,16 +1,6 @@
-# Rule-based event extraction with `odin`
+# Example Domains for `odin`
 
-This project provides an introduction of how to use `odin` and `rune` with several domains.
-
-## What is `odin`?
-`odin` is a system for open-domain information extraction.  
-It uses a novel rule language (`rune`) to define regex-style patterns over both underlying syntactic structures and surface structures (sequences of tokens).  
-Though it can be used as a standalone named entity recognizer, `odin`'s true strength is event extraction.
-
-Primary authors:
- - [Marco Valenzuela](https://github.com/marcovzla)
- - [Gus Hahn-Powell](https://github.com/myedibleenso)
- - [Mihai Surdeanu](http://surdeanu.info/mihai/)
+This project provides an introduction of how to use `odin` with several simple domains. Please see the [Odin Wiki](https://github.com/clulab/processors/wiki/ODIN-(Open-Domain-INformer)) for more details about our event extraction framework, including a complete manual of its rule language and API.
 
 ## What you'll need...
   1. [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
@@ -35,12 +25,6 @@ Ready to get serious?  Use one of these branches to start your own project with 
 |__Branch__ | __Description__|
 |--------|----------------|
 | `skeleton` | A bare-bones project for you to fork |
-
-
-## `rune`
-Learn more about our rule language.
-
-_coming soon_
 
 ## Contribute
 
