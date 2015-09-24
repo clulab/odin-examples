@@ -1,6 +1,6 @@
 # Example Domains for `odin`
 
-This project provides an introduction of how to use `odin` with several simple domains. Please see the [Odin Wiki](https://github.com/clulab/processors/wiki/ODIN-(Open-Domain-INformer)) for more details about our event extraction framework, including a complete manual of its rule language and API.
+This project provides an introduction on how to use `odin` with several simple domains. Please see the [Odin Wiki](https://github.com/clulab/processors/wiki/ODIN-(Open-Domain-INformer)) for more details about our event extraction framework, including a complete manual of its rule language and API.
 
 ## What you'll need...
   1. [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
