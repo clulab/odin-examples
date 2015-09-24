@@ -16,7 +16,7 @@ Run any of the examples with `sbt run`
 |__Domain__ | __Description__|
 |--------|----------------|
 |[`bio`](src/main/scala/toydomains/bio) | A very simple introduction that uses the biology domain |
-| [`likelihood`](src/main/scala/toydomains/general) | How likely or reliable is an event mention?  In this example, we look at how we might label events in terms of their likelihood.  This example also shows how to use a grammar with a master file, taxonomy, imports, and variables. |
+| [`likelihood`](src/main/scala/toydomains/general) | A hedging grammar, i.e., how likely or reliable is an event mention?  In this example, we look at how we might label events in terms of their likelihood.  This example also shows how to use a grammar with a master file, taxonomy, imports, and variables. |
 
 ## Project skeletons
 
