@@ -1,16 +1,13 @@
-package toydomains.general;
+package sampledomains.general;
 
-import java.util.List;
-import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.net.URL;
 import scala.collection.Seq;
-import scala.collection.JavaConversions;
-import edu.arizona.sista.odin.*;
-import edu.arizona.sista.processors.Document;
-import edu.arizona.sista.processors.corenlp.CoreNLPProcessor;
+import org.clulab.odin.*;
+import org.clulab.processors.Document;
+import org.clulab.processors.corenlp.CoreNLPProcessor;
 
 class LikelihoodExampleJava {
 

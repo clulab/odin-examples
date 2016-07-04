@@ -1,7 +1,7 @@
-package toydomains.general
+package sampledomains.general
 
-import edu.arizona.sista.odin._
-import edu.arizona.sista.processors.corenlp.CoreNLPProcessor
+import org.clulab.odin._
+import org.clulab.processors.corenlp.CoreNLPProcessor
 import utils._
 
 

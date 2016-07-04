@@ -1,0 +1,2 @@
+#!/bin/bash
+sbt 'run-main sampledomains.agro.RAPShell'
