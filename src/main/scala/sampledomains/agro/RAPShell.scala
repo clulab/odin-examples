@@ -107,15 +107,17 @@ object RAPShell extends App {
       }
     }
 
-    println("RAP Parameters:")
-    for(k <- params.keySet) {
-      val evidence = params.get(k).get
-      println(s"$k: ${evidence.size} instances:")
-      for(e <- evidence) {
-        println(s"\tJustification: [${e._1}]")
-        println(s"""\tSentence: "${e._2}"""")
+    if(params.nonEmpty) {
+      println("RAP Parameters:")
+      for (k <- params.keySet) {
+        val evidence = params.get(k).get
+        println(s"$k: ${evidence.size} instances:")
+        for (e <- evidence) {
+          println(s"\tJustification: [${e._1}]")
+          println(s"""\tSentence: "${e._2}"""")
+        }
+        println()
       }
-      println()
     }
   }
 

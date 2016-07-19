@@ -1,6 +1,6 @@
 
 #
-# nominal subject of verb
+# nominal subject of verb: "PARAM increases"
 #
 - name: ${label}-verb-1
   priority: ${rulepriority}
@@ -10,7 +10,7 @@
     theme:Param = <xcomp? nsubj (nn|amod)?
 
 #
-# direct object of verb
+# direct object of verb: "decrease PARAM"
 #
 - name: ${label}-verb-2
   priority: ${rulepriority}
@@ -20,7 +20,7 @@
     theme:Param = /dobj|prep_for/ (nn|amod)?    
 
 # 
-# nominal modifiers
+# nominal modifiers: "increase of|in PARAM"
 #    
 - name: ${label}-noun-1
   priority: ${rulepriority}
@@ -30,7 +30,7 @@
     theme:Param = /prep_of|prep_in|prep_for/ (nn|amod)?
 
 #
-# trigger is adjectival modifier of param
+# trigger is adjectival modifier of param: "decreased PARAM"
 #
 - name: ${label}-adj-1
   priority: ${rulepriority}
@@ -40,7 +40,7 @@
     theme:Param = <amod conj_and?
 
 #
-# param is adjectival modifier of trigger
+# param is adjectival modifier of trigger: "PARAM increase"
 #
 - name: ${label}-adj-2
   priority: ${rulepriority}
