@@ -1,0 +1,83 @@
+
+#
+# rules for the basic RAP parameters
+#
+
+- name: fertilizer-use-1
+  priority: ${rulepriority}
+  label: FertilizerUse
+  type: token
+  pattern: 
+    /(?i)fertilizer/ /use|usage/
+    |
+    /(?i)use|usage/ of [tag=/^J/]* /fertilizer/
+    |
+    /(?i)fertilizer\-use/
+
+- name: herd-size-1
+  priority: ${rulepriority}
+  label: HerdSize
+  type: token
+  pattern: 
+    /(?i)herd/ [lemma=size]
+
+- name: household-size-1
+  priority: ${rulepriority}
+  label: HouseholdSize
+  type: token
+  pattern: 
+    /(?i)household|home|family/ [lemma=size]
+
+- name: farm-size-1
+  priority: ${rulepriority}
+  label: FarmSize
+  type: token
+  pattern: 
+    /(?i)farm/ [lemma=size]
+    |
+    /(?i)land/ [lemma=base]
+
+- name: labor-1
+  priority: ${rulepriority}
+  label: Labor
+  type: token
+  pattern: |
+    [lemma=/labor/]       
+
+- name: productivity-1
+  priority: ${rulepriority}
+  label: Productivity
+  type: token
+  pattern: |
+    [lemma=/productivity|production/]   
+
+# indirect drivers of productivity
+- name: productivity-2
+  priority: ${rulepriority}
+  label: Productivity
+  type: token
+  pattern: |
+    [lemma=/energy|logistics|mechanization|technological|technology/]   
+
+- name: soil-1
+  priority: ${rulepriority}
+  label: Soil
+  type: token
+  pattern: |
+    [lemma=/soil/]
+
+- name: subsidy-1
+  priority: ${rulepriority}
+  label: Subsidy
+  type: token
+  pattern: |
+    [lemma=/subsidy/] 
+    |
+    [lemma=/investment/]   
+
+- name: water-1
+  priority: ${rulepriority}
+  label: Water
+  type: token
+  pattern: |
+    [lemma=/water|irrigation/]

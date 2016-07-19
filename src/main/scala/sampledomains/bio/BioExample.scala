@@ -1,8 +1,8 @@
-package toydomains.bio
+package sampledomains.bio
 
-import edu.arizona.sista.odin._
+import org.clulab.odin._
 import utils._
-import edu.arizona.sista.processors.bionlp.BioNLPProcessor
+import org.clulab.processors.bionlp.BioNLPProcessor
 
 object BioExample extends App {
   // two example sentences

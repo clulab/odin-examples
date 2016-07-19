@@ -1,0 +1,37 @@
+taxonomy:
+  - Entity:
+    - Param:
+      - FarmSize
+      - FertilizerUse
+      - FertilizerPrice
+      - HerdSize
+      - HouseholdSize
+      - Labor
+      - PestDisease
+      - Productivity
+      - Soil
+      - Subsidy
+      - Water
+  - Event:
+    - Decrease
+    - Increase
+
+rules:
+  - import: grammars/agro/entities.yml
+    vars:
+      # We need our entities before we can match events
+      # Here we make use of the ${rulepriority} variable
+      # used in the entities.yml rules
+      rulepriority: "1"
+
+  - import: grammars/agro/events.yml
+    vars:
+      label: Decrease
+      rulepriority: "3+"
+      trigger: "affect|cut|decline|decrease|inadequate|less|low|reduce|shortage|shrink"
+
+  - import: grammars/agro/events.yml
+    vars:
+      label: Increase
+      rulepriority: "3+"
+      trigger: "better|boost|develop|high|improve|increase|intensity|invest|more|progress|prioritize|promote|support"

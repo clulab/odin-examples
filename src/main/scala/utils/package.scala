@@ -1,5 +1,5 @@
-import edu.arizona.sista.odin._
-import edu.arizona.sista.processors.{Sentence, Document}
+import org.clulab.odin._
+import org.clulab.processors.{Sentence, Document}
 
 package object utils {
 
