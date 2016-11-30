@@ -4,9 +4,10 @@ import java.io.File
 
 import jline.console.ConsoleReader
 import jline.console.history.FileHistory
-import org.clulab.odin.{Mention, ExtractorEngine}
+import org.clulab.odin.{ExtractorEngine, Mention}
 import org.clulab.processors.{Document, Processor}
 import org.clulab.processors.fastnlp.FastNLPProcessor
+import org.clulab.processors.shallownlp.ShallowNLPProcessor
 import utils._
 
 import scala.collection.immutable.{HashMap, ListMap}
@@ -35,7 +36,7 @@ object RAPShell extends App {
   )
 
   // create the processor
-  val fast: Processor = new FastNLPProcessor(useMalt = false, withDiscourse = false)
+  val fast: Processor = new FastNLPProcessor(useMalt = false, withDiscourse = ShallowNLPProcessor.NO_DISCOURSE)
 
   // read rules from general-rules.yml file in resources
   val source = io.Source.fromURL(getClass.getResource("/grammars/agro/master.yml"))

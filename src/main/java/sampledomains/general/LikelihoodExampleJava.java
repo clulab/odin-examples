@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.net.URL;
+
 import scala.collection.Seq;
 import org.clulab.odin.*;
 import org.clulab.processors.Document;
@@ -22,7 +23,7 @@ class LikelihoodExampleJava {
             + "Everyone seems to believe that Horace will surely lose the election.\n"
             + "Everyone believes Fernando will win the election.\n";
         // make new processor
-        CoreNLPProcessor proc = new CoreNLPProcessor(true, false, 100);
+        CoreNLPProcessor proc = new CoreNLPProcessor(true, false, 0, 100);
         // read rules
         String rules = readResource("grammars/likelihood/master.yml");
         // make new extractor engine
