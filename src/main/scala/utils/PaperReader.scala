@@ -90,4 +90,12 @@ object PaperReader {
     val text = getContents(file)
     mkDoc(text, paperID)
   }
+
+  def deserializeJSONDocuments(dir: File): Seq[Document] = {
+    require(dir.isDirectory, s"'${dir.getCanonicalPath}' is not a directory")
+    for {
+      f <- dir.listFiles
+      if f.getName.endsWith(".json")
+    } yield org.clulab.serialization.json.JSONSerializer.toDocument(f)
+  }
 }
