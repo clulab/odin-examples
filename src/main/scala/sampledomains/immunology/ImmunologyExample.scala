@@ -1,7 +1,10 @@
 package sampledomains.immunology
 
+import java.io.File
 import org.clulab.odin.ExtractorEngine
-import org.clulab.processors.fastnlp.FastNLPProcessor
+import utils.PaperReader
+import ai.lum.common.ConfigUtils._
+import utils.displayMention
 
 
 object ImmunologyExample extends App {
@@ -11,10 +14,15 @@ object ImmunologyExample extends App {
   source.close()
 
   // creates an extractor engine using the rules and the default actions
-  val extractor = ExtractorEngine(rules)
+  val ee = ExtractorEngine(rules)
+  
+  val serializedDocs = PaperReader.config[File]("reader.serializedPapersDir")
+  val mentions = for {
+    d <- PaperReader.deserializeJSONDocuments(serializedDocs)
+    // extract mentions from each document
+    m <- ee.extractFrom(d)
+  } yield m
 
-  // annotate the sentences
-  val proc = new FastNLPProcessor
-
-
+  // print each mention
+  mentions foreach displayMention
 }
