@@ -6,7 +6,7 @@ import org.clulab.processors.fastnlp.FastNLPProcessor
 
 object ImmunologyExample extends App {
   // read rules from general-rules.yml file in resources
-  val source = io.Source.fromURL(getClass.getResource("/grammars/likelihood/master.yml"))
+  val source = io.Source.fromURL(getClass.getResource("/grammars/immunology/master.yml"))
   val rules = source.mkString
   source.close()
 
@@ -15,5 +15,6 @@ object ImmunologyExample extends App {
 
   // annotate the sentences
   val proc = new FastNLPProcessor
+
 
 }
