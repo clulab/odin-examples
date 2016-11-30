@@ -5,7 +5,7 @@ import java.io.File
 import ai.lum.common.ConfigUtils._
 import ai.lum.nxmlreader.{NxmlDocument, NxmlReader}
 import com.typesafe.config.ConfigFactory
-import org.apache.commons.io.FilenameUtils
+import org.apache.commons.io.{FileUtils, FilenameUtils}
 import org.clulab.processors.Document
 import org.clulab.processors.bionlp.BioNLPProcessor
 
@@ -21,8 +21,8 @@ object PaperReader {
   val config = ConfigFactory.load()
   // the number of threads to use for parallelization
   val threadLimit: Int = config[Int]("threadLimit")
-  val ignoreSections: List[String] = config[List[String]]("nxml.ignoreSections")
-  val fileEncoding = config.getString("encoding")
+  val ignoreSections: List[String] = config[List[String]]("reader.nxml.ignoreSections")
+  val fileEncoding = config.getString("reader.encoding")
   var proc = new BioNLPProcessor
   val nxmlReader = new NxmlReader(ignoreSections.toSet, transformText = proc.preprocessText)
 
