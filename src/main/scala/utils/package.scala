@@ -62,4 +62,31 @@ package object utils {
         }
     }
   }
+
+
+  def printMentions(mentions: Seq[Mention]): Unit = {
+    for (m <- mentions) {
+      printMention(m)
+      println("---")
+    }
+  }
+
+  def printMention(mention: Mention): Unit = mention match {
+    case m: TextBoundMention =>
+      println(s"label: ${m.label}")
+      println(s"text: ${m.text}")
+    case m: RelationMention =>
+      println(s"label: ${m.label}")
+      println("arguments:")
+      for (arg <- m.arguments.keys) {
+        println(s"  $arg: ${m.arguments(arg).head.text}")
+      }
+    case m: EventMention =>
+      println(s"label: ${m.label}")
+      println(s"trigger: ${m.trigger.text}")
+      println("arguments:")
+      for (arg <- m.arguments.keys) {
+        println(s"  $arg: ${m.arguments(arg).head.text}")
+      }
+  }
 }
