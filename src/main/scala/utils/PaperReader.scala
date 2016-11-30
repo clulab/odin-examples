@@ -99,3 +99,20 @@ object PaperReader {
     } yield org.clulab.serialization.json.JSONSerializer.toDocument(f)
   }
 }
+
+
+object ReadPapers extends App {
+
+  import org.clulab.serialization.json._
+  val papersDir: File = PaperReader.config[File]("reader.papersDir")
+  val serializedPapersDir: File = PaperReader.config[File]("reader.serializedPapersDir")
+  FileUtils.forceMkdir(serializedPapersDir)
+  val docs = PaperReader.readPapers(papersDir)
+  for {
+    (d: Document, i) <- docs.zipWithIndex
+  } {
+    val fname = if (d.id.nonEmpty) s"doc-id-${d.id.get}.json" else s"doc-$i.json"
+    val outFile = new File(serializedPapersDir, fname)
+    d.saveJSON(outFile, pretty = true)
+  }
+}
