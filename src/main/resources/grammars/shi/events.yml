@@ -1,50 +1,15 @@
 
 #
-# nominal subject of verb: "PARAM increases"
+# treatment was applied
 #
-- name: ${label}-verb-1
-  priority: ${rulepriority}
-  label: ${label}
+- name: treatment-applied-passive
+  priority: 10
+  label: TreatmentApplication
   pattern: |
-    trigger = [lemma=/${ trigger }/ & tag=/^V/]
-    theme:Param = <xcomp? nsubj (nn|amod)?
+    trigger = [lemma=/apply/ & tag=/^V/]
+    treatment:Treatment = nsubjpass 
+    quantity:Quantity = prep_at|prep_followed_by
 
-#
-# direct object of verb: "decrease PARAM"
-#
-- name: ${label}-verb-2
-  priority: ${rulepriority}
-  label: ${label}
-  pattern: |
-    trigger = [lemma=/${ trigger }/ & tag=/^V/]
-    theme:Param = /dobj|prep_for/ (nn|amod)?    
 
-# 
-# nominal modifiers: "increase of|in PARAM"
-#    
-- name: ${label}-noun-1
-  priority: ${rulepriority}
-  label: ${label}
-  pattern: |
-    trigger = [lemma=/${ trigger }/ & tag=/^N/]
-    theme:Param = /prep_of|prep_in|prep_for/ (nn|amod)?
 
-#
-# trigger is adjectival modifier of param: "decreased PARAM"
-#
-- name: ${label}-adj-1
-  priority: ${rulepriority}
-  label: ${label}
-  pattern: |
-    trigger = [lemma=/${ trigger }/ & tag=/^V|^J/]
-    theme:Param = <amod conj_and?
 
-#
-# param is adjectival modifier of trigger: "PARAM increase"
-#
-- name: ${label}-adj-2
-  priority: ${rulepriority}
-  label: ${label}
-  pattern: |
-    trigger = [lemma=/${ trigger }/ & tag=/^N/]
-    theme:Param = amod conj_and?

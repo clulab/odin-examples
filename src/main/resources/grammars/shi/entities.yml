@@ -3,81 +3,38 @@
 # rules for the basic RAP parameters
 #
 
-- name: fertilizer-use-1
-  priority: ${rulepriority}
-  label: FertilizerUse
+- name: quantity
+  priority: 1
+  label: Quantity
   type: token
   pattern: 
-    /(?i)fertilizer/ /use|usage/
-    |
-    /(?i)use|usage/ of [tag=/^J/]* /fertilizer/
-    |
-    /(?i)fertilizer\-use/
+    [tag = "CD"] "kg" "ha"?
 
-- name: herd-size-1
-  priority: ${rulepriority}
-  label: HerdSize
+- name: percentage
+  priority: 1
+  label: Percentage
   type: token
   pattern: 
-    /(?i)herd/ [lemma=size]
+    [tag = "CD"] "%"
 
-- name: household-size-1
-  priority: ${rulepriority}
-  label: HouseholdSize
+- name: soil-component
+  priority: 1
+  label: SoilComponent
   type: token
   pattern: 
-    /(?i)household|home|family/ [lemma=size]
+    "sand"|"silt"|"clay"
 
-- name: farm-size-1
-  priority: ${rulepriority}
-  label: FarmSize
+- name: crop
+  priority: 1
+  label: Crop
   type: token
   pattern: 
-    /(?i)farm/ [lemma=size]
-    |
-    /(?i)land/ [lemma=base]
+    [tag = /NN$|JJ/]? [lemma = /wheat|rye|tomato/]
 
-- name: labor-1
-  priority: ${rulepriority}
-  label: Labor
+- name: nitrogen
+  priority: 1
+  label: Nitrogen
   type: token
-  pattern: |
-    [lemma=/labor/]       
+  pattern: 
+    [lemma = "nitrogen"]
 
-- name: productivity-1
-  priority: ${rulepriority}
-  label: Productivity
-  type: token
-  pattern: |
-    [lemma=/productivity|production/]   
-
-# indirect drivers of productivity
-- name: productivity-2
-  priority: ${rulepriority}
-  label: Productivity
-  type: token
-  pattern: |
-    [lemma=/energy|logistics|mechanization|technological|technology/]   
-
-- name: soil-1
-  priority: ${rulepriority}
-  label: Soil
-  type: token
-  pattern: |
-    [lemma=/soil/]
-
-- name: subsidy-1
-  priority: ${rulepriority}
-  label: Subsidy
-  type: token
-  pattern: |
-    [lemma=/subsidy/] 
-    |
-    [lemma=/investment/]   
-
-- name: water-1
-  priority: ${rulepriority}
-  label: Water
-  type: token
-  pattern: |
-    [lemma=/water|irrigation/]

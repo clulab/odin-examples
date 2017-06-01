@@ -12,13 +12,6 @@ taxonomy:
 
 rules:
   - import: grammars/shi/entities.yml
-    vars:
-      # We need our entities before we can match events
-      # Here we make use of the ${rulepriority} variable
-      # used in the entities.yml rules
-      rulepriority: "1"
 
   - import: grammars/shi/events.yml
-    vars:
-      rulepriority: "3+"
 
