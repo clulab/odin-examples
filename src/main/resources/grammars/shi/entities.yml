@@ -1,40 +1,40 @@
 
 #
-# rules for the basic RAP parameters
+# rules for the basic SHI entities
 #
 
 - name: quantity
   priority: 1
   label: Quantity
   type: token
-  pattern: 
-    [tag = "CD"] "kg" "ha"?
+  pattern: |
+    [tag = "CD"] ("kg"|"g") "ha"?
 
 - name: percentage
   priority: 1
   label: Percentage
   type: token
-  pattern: 
+  pattern: |
     [tag = "CD"] "%"
 
 - name: soil-component
   priority: 1
   label: SoilComponent
   type: token
-  pattern: 
-    "sand"|"silt"|"clay"
+  pattern: |
+    "sand"|"silt"|"clay"|"peat"|"loam"
 
 - name: crop
   priority: 1
   label: Crop
   type: token
-  pattern: 
-    [tag = /NN$|JJ/]? [lemma = /wheat|rye|tomato/]
+  pattern: |
+    [tag = /NN$|JJ/]* [lemma = /banana|cassava|maize|millet|potato|rye|sugarcane|tomato|sorghum|soybean|yam|wheat/]
 
 - name: nitrogen
   priority: 1
   label: Nitrogen
   type: token
-  pattern: 
+  pattern: |
     [lemma = "nitrogen"]
 

@@ -10,6 +10,20 @@
     treatment:Treatment = nsubjpass 
     quantity:Quantity = prep_at|prep_followed_by
 
+#
+# soild composition
+#
+- name: soil-composition-surface
+  priority: 10
+  label: SoilComposition
+  type: token
+  pattern: |
+    (?<trigger> [tag = "NNP"]* @SoilComponent)
+    "-LRB-"
+    (","? (?<component> @Percentage @SoilComponent))+
+    "-RRB-"
+
+
 
 
 

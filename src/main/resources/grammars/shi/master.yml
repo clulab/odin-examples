@@ -10,6 +10,9 @@ taxonomy:
     - TreatmentApplication
     - SoilComposition
 
+vars:
+    soilType: "sand|silt|clay|peat|loam"
+
 rules:
   - import: grammars/shi/entities.yml
 

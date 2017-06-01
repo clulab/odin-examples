@@ -90,44 +90,6 @@ object SHIShell extends App {
 
     // debug display the mentions
     displayMentions(mentions, doc)
-
-    // pretty display
-    prettyDisplay(mentions, doc)
-  }
-
-  def prettyDisplay(mentions:Seq[Mention], doc:Document): Unit = {
-    val events = mentions.filter(_ matches "Event")
-    val params = new mutable.HashMap[String, ListBuffer[(String, String)]]()
-    for(e <- events) {
-      val f = formal(e)
-      if(f.isDefined) {
-        val just = e.text
-        val sent = e.sentenceObj.getSentenceText
-        params.getOrElseUpdate(f.get, new ListBuffer[(String, String)]) += new Tuple2(just, sent)
-      }
-    }
-
-    if(params.nonEmpty) {
-      println("RAP Parameters:")
-      for (k <- params.keySet) {
-        val evidence = params.get(k).get
-        println(s"$k: ${evidence.size} instances:")
-        for (e <- evidence) {
-          println(s"\tJustification: [${e._1}]")
-          println(s"""\tSentence: "${e._2}"""")
-        }
-        println()
-      }
-    }
-  }
-
-  def formal(e:Mention):Option[String] = {
-    var t = ""
-    if(e matches "Decrease") t = "DECREASE"
-    else if(e matches "Increase") t = "INCREASE"
-    else return None
-
-    Some(s"$t of ${e.arguments.get("theme").get.head.label}")
   }
 
   def annotate(text:String):Document = {
@@ -135,7 +97,7 @@ object SHIShell extends App {
     proc.tagPartsOfSpeech(doc)
     proc.lemmatize(doc)
     proc.parse(doc)
-    proc.chunking(doc)
+    //proc.chunking(doc)
     doc.clear()
     doc
   }
